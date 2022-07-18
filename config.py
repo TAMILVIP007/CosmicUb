@@ -21,4 +21,3 @@ class Vars:
     TOKEN = getenv("TOKEN")
     APP_KEY = getenv("APP_KEY")
     APP_HASH = getenv("APP_HASH")
-    LOGGER = int(getenv("LOGGER"))

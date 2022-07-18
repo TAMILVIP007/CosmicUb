@@ -44,7 +44,7 @@ async def get_user(event):
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
         user_id = reply_message.sender_id
-        return user_id``
+        return user_id
     elif not event.reply_to_msg_id:
         try:
             args = event.text.split(" ")[1]
