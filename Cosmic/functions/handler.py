@@ -11,8 +11,7 @@ from Cosmic.functions.decorators import msg_link
 from Cosmic.functions.misc import eor, telegraph_
 from Cosmic.functions.vars import authorized_
 
-HANDLER = db.get_key("HANDLER") or "."
-BOT_MODE = db.get_key("BOT_MODE") or False
+
 
 def cosmic(**args):
     args["pattern"] = "^[" + Vars.HANDLER + "](?i)" + args["pattern"]
