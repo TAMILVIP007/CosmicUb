@@ -1,6 +1,5 @@
 from config import Vars
 
-
 def authorized_():
     auth_ = []
     for x in Vars.SUDOS:
