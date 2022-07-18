@@ -1,0 +1,34 @@
+{
+      "name" : "Dasha",
+      "description" : "Sus",
+      "repository" : "https://github.com/TAMILVIP007/Dasha",
+      "logo" : "https://telegra.ph//file/7eb582eca88f924bd6eb8.jpg",
+      "keywords" : ["python3", "telethon"],
+      "env" : {
+         "TOKEN" : {
+            "description" : "Get from @botfather",
+            "required" : true
+           },
+         "SES" : {
+            "description" : "Get from tss.anjanamadu.com ",
+            "required" : true
+           },
+         "OWNER_ID" : {
+              "description" : "ur id",
+               "required" : true
+           },
+         "DB_URL" : {
+            "description" : "Database url from mongodb.com",
+             "required" : false
+         },  
+         "AP_K" : {
+              "description" : "Get from my.telegram.org",
+              "required" : true
+           },
+        "AP_HS" : {
+              "description" : "Get from my.telegram.org",
+              "required" : true
+           }
+     }
+ }
+      

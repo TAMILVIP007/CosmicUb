@@ -1,0 +1,15 @@
+newthon
+gitpython
+dnspython
+pymongo
+speedtest-cli
+https://codeload.github.com/MiyukiKun/FastTelethonhelper/zip/refs/heads/main
+requests
+ffmpeg
+selenium
+python-dotenv
+bs4
+youtube_dl
+youtubesearchpython
+telegraph
+cryptg
