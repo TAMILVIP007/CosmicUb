@@ -7,16 +7,15 @@ from telethon import Button, events
 
 from config import Vars
 from Cosmic import cosmo, tbot
-from Cosmic.database import db
 from Cosmic.functions.decorators import msg_link
 from Cosmic.functions.misc import eor, telegraph_
 from Cosmic.functions.vars import authorized_
 
 
-
 def cosmic(**args):
     args["pattern"] = "^[" + Vars.HANDLER + "](?i)" + args["pattern"]
     args["from_users"] = authorized_()
+
     def decorator(func):
         async def wrapper(ev):
             try:

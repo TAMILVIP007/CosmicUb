@@ -1,13 +1,14 @@
-from Cosmic.functions.auto import customizeBot, start_up
 import glob
 import importlib
 import logging
 import sys
 from pathlib import Path
-from Cosmic.database import db
-from Cosmic import cosmo, tbot
 
-from . import cosmo, run_async
+from Cosmic import tbot
+from Cosmic.database import db
+from Cosmic.functions.auto import customizeBot, start_up
+
+from . import run_async
 
 
 def load_plugins(plugin_name):
@@ -37,11 +38,11 @@ def main():
         run_async(customizeBot())
         run_async(start_up())
         tbot.start(bot_token=db.get_key("TOKEN"))
-        from Cosmic.functions.handler import cosmic
         tbot.run_until_disconnected()
     except Exception as e:
         print(e)
         raise e
+
 
 if __name__ == "__main__":
     main()

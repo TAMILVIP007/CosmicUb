@@ -1,4 +1,5 @@
-import asyncio, re
+import asyncio
+import re
 import sys
 from secrets import token_hex
 
@@ -8,6 +9,7 @@ from config import Vars
 from Cosmic import LOGGER, cosmo, tbot
 from Cosmic.database.varsdb import MongoVars
 
+
 def strip_token(text):
     a = re.findall(r"\d+:.+", text)
     token = a[0].strip()
@@ -15,6 +17,8 @@ def strip_token(text):
 
 
 db = MongoVars()
+
+
 async def start_up():
     owner_id = (await cosmo.get_me()).id
     db.set_key("OWNER_ID", owner_id)
@@ -88,4 +92,3 @@ async def customizeBot():
     last = await cosmo.send_message(chat, "/done")
     for x in range(msg1.id, last.id):
         await cosmo.delete_messages(chat, x)
-

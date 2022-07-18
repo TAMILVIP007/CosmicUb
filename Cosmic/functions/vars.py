@@ -1,5 +1,6 @@
 from . import db
 
+
 def authorized_():
     auth_ = []
     db.get_key("SUDOS")

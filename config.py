@@ -18,4 +18,4 @@ class Vars:
     APP_KEY = getenv("APP_KEY")
     APP_HASH = getenv("APP_HASH")
     HANDLER = "."
-    BOT_MODE =  False
+    BOT_MODE = False
