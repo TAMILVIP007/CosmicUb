@@ -1,7 +1,7 @@
-from . import db
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor
 
+from . import db
 
 
 @cosmic(pattern="setvar")
@@ -12,7 +12,10 @@ async def setDBvar(event):
     except IndexError:
         return await eor(event, "Provide the key and a value!")
     db.set_key(key, value)
-    await eor(event, "__Configured__\n**◆ Key:**`{}`\n**◆ Value:**`{}`".format(key, value))
+    await eor(
+        event, "__Configured__\n**◆ Key:**`{}`\n**◆ Value:**`{}`".format(key, value)
+    )
+
 
 @cosmic(pattern="getvar")
 async def getDBvar(event):

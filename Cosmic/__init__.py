@@ -1,9 +1,10 @@
+import asyncio
 import logging
 import time
+
+from pytgcalls import GroupCallFactory
 from telethon import TelegramClient
 from telethon.sessions import StringSession
-from pytgcalls import GroupCallFactory
-import asyncio 
 
 from config import Vars
 
@@ -27,8 +28,5 @@ VCLIENT = GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON
 
 
 def run_async(*args, **kwargs):
-        loop = asyncio.get_event_loop()
-        return loop.run_until_complete(*args, **kwargs)
-
-
-
+    loop = asyncio.get_event_loop()
+    return loop.run_until_complete(*args, **kwargs)

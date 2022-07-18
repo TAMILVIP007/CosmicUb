@@ -5,9 +5,9 @@ from telethon import version
 
 from Cosmic import StartTime
 from Cosmic.functions.handler import cosmic
+from Cosmic.functions.misc import eor, get_readable_time
 
 from .. import cosmo
-from Cosmic.functions.misc import eor, get_readable_time
 
 
 @cosmic(pattern="ping")

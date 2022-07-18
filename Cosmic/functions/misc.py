@@ -1,6 +1,7 @@
 from telegraph import Telegraph
+
 from Cosmic.modules import OWNER_ID
-from Cosmic import cosmo
+
 telegraph = Telegraph()
 r = telegraph.create_account(short_name="Cosmic")
 auth_url = r["auth_url"]
@@ -66,7 +67,7 @@ async def get_user(event):
                 return user
             except Exception as e:
                 return await eor(event, f"`{str(e)}`")
-    
+
 
 async def eor(e, msg, file=None, parse_mode="md", link_preview=False):
     if e.sender_id == OWNER_ID:

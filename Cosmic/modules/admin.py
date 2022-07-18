@@ -1,7 +1,7 @@
 from Cosmic import cosmo
 from Cosmic.functions.handler import cosmic
-
 from Cosmic.functions.misc import eor, get_user
+
 
 @cosmic(pattern="kick ?(.*)")
 async def kick(event):
@@ -17,8 +17,9 @@ async def kick(event):
         return await eor(event, "Failed to Kick, No CanBanUsers Right.")
     try:
         await cosmo.kick_participant(event.chat_id, user.id)
-        await eor(event, 
-            f"Kicked **[{user.first_name}](tg://user?id={user.id})** from [{event.chat.title}](http://t.me/{event.chat.username})!"
+        await eor(
+            event,
+            f"Kicked **[{user.first_name}](tg://user?id={user.id})** from [{event.chat.title}](http://t.me/{event.chat.username})!",
         )
     except:
         await eor(event, "Can't kick admins.")
@@ -54,14 +55,15 @@ async def ban(event):
     except TypeError:
         pass
     if not user:
-        await eor(event,  "Failed to fetch user.")
-    perms = await cosmo.get_permissions(event.chat_id, "me")
+        await eor(event, "Failed to fetch user.")
+    await cosmo.get_permissions(event.chat_id, "me")
     if not event.chat.admin_rights.ban_users:
         return await eor(event, "Dont have enough ryts")
     try:
         await cosmo.edit_permissions(event.chat_id, user.id, view_messages=False)
-        await eor(event, 
-            f"Banned **[{user.first_name}](tg://user?id={user.id})** from [{event.chat.title}](http://t.me/{event.chat.username})!"
+        await eor(
+            event,
+            f"Banned **[{user.first_name}](tg://user?id={user.id})** from [{event.chat.title}](http://t.me/{event.chat.username})!",
         )
     except:
         await eor(event, "Can't ban admins.")
@@ -80,7 +82,8 @@ async def dban(event):
         await event.delete()
     except:
         await eor(event, "Can't ban admins.")
-    
+
+
 @cosmic(pattern="unban ?(.*)")
 async def unban(event):
     if event.is_private:
@@ -97,4 +100,3 @@ async def unban(event):
         await cosmo.edit_permissions(event.chat_id, user, view_messages=True)
     except:
         await eor(event, "Can't ban admins.")
-

@@ -1,6 +1,6 @@
 from ..functions.handler import cosmic
-from . import db
 from ..functions.misc import eor, get_user
+from . import db
 
 
 @cosmic(pattern="addsudo")
@@ -17,6 +17,7 @@ async def add_sudo(event):
     db.set_key("SUDOS", SUDOS)
     return await eor(event, "`User has been added to sudo list!`")
 
+
 @cosmic(pattern="rmsudo")
 async def rm_sudo(event):
     user = await get_user(event)
@@ -28,6 +29,7 @@ async def rm_sudo(event):
     SUDOS.remove(user.id)
     db.set_key("SUDOS", SUDOS)
     return await eor(event, "`User has been removed from sudo list!`")
+
 
 @cosmic(pattern="listsudo")
 async def list_sudo(event):

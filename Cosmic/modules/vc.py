@@ -1,9 +1,11 @@
-from Cosmic import cosmo, VCLIENT
-from Cosmic.functions.handler import cosmic
-from Cosmic.functions.vcfuncs import get_file, transcode
-from Cosmic.functions.misc import eor
-from pytgcalls import GroupCallFactory
 import os
+
+from pytgcalls import GroupCallFactory
+
+from Cosmic import VCLIENT, cosmo
+from Cosmic.functions.handler import cosmic
+from Cosmic.functions.misc import eor
+from Cosmic.functions.vcfuncs import get_file, transcode
 
 
 @cosmic(pattern="play")
@@ -23,4 +25,3 @@ async def play(event):
     await call.start_audio(file)
     os.remove(file)
     await msg.edit("`Playing...`")
-    

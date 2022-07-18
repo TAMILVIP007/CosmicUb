@@ -1,9 +1,11 @@
-import asyncio, os 
-from Cosmic.functions.misc import eor
-from Cosmic import cosmo
-from youtubesearchpython import VideosSearch
-import youtube_dl
+import asyncio
+import os
+
 from FastTelethonhelper import fast_download
+
+from Cosmic import cosmo
+from Cosmic.functions.misc import eor
+
 
 async def transcode(filename):
     outname = filename.replace(".mp3", "")
@@ -25,6 +27,7 @@ async def transcode(filename):
     os.remove(filename)
     return f"{outname}.raw"
 
+
 ydl_opts = {
     "format": "bestaudio/best",
     "outtmpl": "%(id)s.mp3",
@@ -39,7 +42,9 @@ async def get_file(event):
             return await eor(event, "`Reply to a Audio file`")
         name = await fast_download(cosmo, reply.media.file_id)
         return name
-'''
+
+
+"""
     elif len(event.pattern_match.group(1)) > 1:
         try:
             search = VideosSearch(event.pattern_match.group(1), limit=1)
@@ -49,4 +54,4 @@ async def get_file(event):
             return await eor(event, "`No results found!`")
         except Exception as e:
             return await eor(event, f"`{e}`")
-'''
+"""

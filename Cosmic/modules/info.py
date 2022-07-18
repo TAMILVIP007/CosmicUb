@@ -2,8 +2,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 from Cosmic import cosmo
 from Cosmic.functions.handler import cosmic
-
 from Cosmic.functions.misc import get_user
+
 
 @cosmic(pattern="info ?(.*)")
 async def new_(event):

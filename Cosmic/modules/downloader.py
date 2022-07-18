@@ -2,8 +2,8 @@ from time import time
 
 from FastTelethonhelper import fast_download, fast_upload
 
-from Cosmic.functions.handler import cosmic
 from Cosmic import cosmo
+from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor
 
 

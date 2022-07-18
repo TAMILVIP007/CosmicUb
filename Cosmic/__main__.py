@@ -1,13 +1,13 @@
-
+import asyncio
 import glob
 import importlib
 import logging
-import asyncio
 import sys
 from pathlib import Path
-from . import LOGGER, cosmo, start_up
 
-from Cosmic import tbot, cosmo
+from Cosmic import cosmo, tbot
+
+from . import cosmo, start_up
 
 
 def load_plugins(plugin_name):
@@ -31,11 +31,10 @@ for name in files:
 
 print("Userbot Started Successfully ")
 
+
 def main():
     tbot.run_until_disconnected()
     cosmo.run_until_disconnected()
-        
-
 
 
 loop = asyncio.get_event_loop()

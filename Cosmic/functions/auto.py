@@ -1,10 +1,12 @@
-from telethon import Button, version
-from Cosmic.database.varsdb import MongoVars
-from Cosmic import cosmo, tbot, LOGGER
 import asyncio
 import sys
 from secrets import token_hex
+
+from telethon import Button, version
+
 from config import Vars
+from Cosmic import LOGGER, cosmo, tbot
+from Cosmic.database.varsdb import MongoVars
 
 
 async def start_up():
@@ -70,7 +72,7 @@ async def customizeBot():
     await asyncio.sleep(1)
     await cosmo.send_message(chat, "/setuserpic")
     await asyncio.sleep(1)
-    await cosmo.send_message(chat, "@" + uname)  
+    await cosmo.send_message(chat, "@" + uname)
     await cosmo.send_file(chat, "assets/log_image.jpg")
     await asyncio.sleep(1)
     last = await cosmo.send_message(chat, "/done")

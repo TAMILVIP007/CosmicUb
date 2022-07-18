@@ -7,16 +7,15 @@ from telethon import Button, events
 
 from config import Vars
 from Cosmic import cosmo, tbot
-from time import gmtime, strftime
 from Cosmic.functions.decorators import msg_link
+from Cosmic.functions.misc import eor, telegraph_
 from Cosmic.functions.vars import authorized_
-from Cosmic.functions.misc import telegraph_
-from Cosmic.functions.misc import eor
 
 
 def cosmic(**args):
     args["pattern"] = "^[" + Vars.HANDLER + "](?i)" + args["pattern"]
     args["from_users"] = authorized_()
+
     def decorator(func):
         async def wrapper(ev):
             try:
@@ -24,6 +23,7 @@ def cosmic(**args):
             except BaseException as exception:
                 logging.info(exception)
                 await log_error(ev)
+
         if Vars.BOT_MODE:
             tbot.add_event_handler(wrapper, events.MessageEdited(**args))
             tbot.add_event_handler(wrapper, events.NewMessage(**args))
