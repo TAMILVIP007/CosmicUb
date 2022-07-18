@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from telethon import TelegramClient
 from Cosmic.database import db
-from Cosmic import cosmo, tbot
+from Cosmic import cosmo, Vars
 
 from . import cosmo, run_async
 
@@ -34,7 +34,6 @@ print("Userbot Started Successfully ")
 
 
 def main():
-    from Cosmic.functions.handler import cosmic
     try:
         run_async(customizeBot())
         run_async(start_up())

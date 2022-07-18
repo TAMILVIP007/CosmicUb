@@ -4,6 +4,7 @@ import time
 
 from pytgcalls import GroupCallFactory
 from telethon.sessions import StringSession
+from telethon import TelegramClient
 
 from config import Vars
 
