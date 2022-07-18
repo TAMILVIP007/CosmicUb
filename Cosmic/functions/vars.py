@@ -1,8 +1,10 @@
-from config import Vars
+from . import db
 
 def authorized_():
     auth_ = []
-    for x in Vars.SUDOS:
-        auth_.append(int(x))
-    auth_.append(Vars.OWNER_ID)
+    db.get_key("SUDOS")
+    if db.get_key("SUDOS") is not None:
+        for i in db.get_key("SUDOS"):
+            auth_.append(i)
+    auth_.append(db.get_key("OWNER_ID"))
     return auth_
