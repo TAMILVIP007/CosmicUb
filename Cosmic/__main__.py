@@ -4,7 +4,8 @@ import importlib
 import logging
 import sys
 from pathlib import Path
-
+from telethon import TelegramClient
+from Cosmic.database import db
 from Cosmic import cosmo, tbot
 
 from . import cosmo, run_async
@@ -37,6 +38,7 @@ def main():
     try:
         run_async(customizeBot())
         run_async(start_up())
+        tbot = TelegramClient(None, Vars.APP_KEY, Vars.APP_HASH).start(bot_token=db.get_key("TOKEN"))
         tbot.run_until_disconnected()
     except Exception as e:
         print(e)

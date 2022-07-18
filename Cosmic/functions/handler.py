@@ -15,8 +15,7 @@ from Cosmic.functions.vars import authorized_
 
 def cosmic(**args):
     args["pattern"] = "^[" + Vars.HANDLER + "](?i)" + args["pattern"]
-    args["func"] = authorized_()
-
+    args["from_users"] = authorized_()
     def decorator(func):
         async def wrapper(ev):
             try:
