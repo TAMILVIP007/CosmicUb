@@ -45,18 +45,18 @@ async def customizeBot():
     await asyncio.sleep(1)
     await cosmo.send_message(chat, "/newbot")
     await asyncio.sleep(1)
-    msg2 = await cosmo.get_messages(chat, limit=1)[0]
-    if not "choose a name" in msg2.text:
+    msg2 = await cosmo.get_messages(chat, limit=1)
+    if not "choose a name" in msg2[0].text:
         return LOGGER.critical("Cant create bot.. Exiting")
     await cosmo.send_message(chat, name)
     await asyncio.sleep(1)
     await cosmo.send_message(chat, uname)
-    msg3 = await cosmo.get_messages(chat, limit=1)[0]
-    if "Sorry," in msg3.text:
+    msg3 = await cosmo.get_messages(chat, limit=1)
+    if "Sorry," in msg3[0].text:
         uname = (await cosmo.get_me()).username + token_hex(2) + "_bot"
         await cosmo.send_message(chat, uname)
-    msg4 = await cosmo.get_messages(chat, limit=1)[0]
-    db.set_key("TOKEN", strip_token(msg4.text))
+    msg4 = await cosmo.get_messages(chat, limit=1)
+    db.set_key("TOKEN", strip_token(msg4[0].text))
     await asyncio.sleep(1)
     await cosmo.send_message(chat, "/setdescription")
     await asyncio.sleep(1)
