@@ -1,4 +1,3 @@
-from cProfile import run
 from Cosmic.functions.auto import customizeBot, start_up
 import glob
 import importlib
@@ -41,6 +40,6 @@ def main():
     except Exception as e:
         print(e)
         raise e
-        
+
 if __name__ == "__main__":
     main()
