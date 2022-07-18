@@ -6,7 +6,8 @@ from traceback import format_exc
 from telethon import Button, events
 
 from config import Vars
-from Cosmic import cosmo, tbot, db
+from Cosmic import cosmo, tbot
+from Cosmic.database import db
 from Cosmic.functions.decorators import msg_link
 from Cosmic.functions.misc import eor, telegraph_
 from Cosmic.functions.vars import authorized_
