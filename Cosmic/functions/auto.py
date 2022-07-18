@@ -37,6 +37,8 @@ async def start_up():
 
 async def customizeBot():
     chat = "@botfather"
+    if db.get_key("TOKEN"):
+        return
     name = (await cosmo.get_me()).first_name + "'s bot"
     uname = (await cosmo.get_me()).username + "_bot"
     msg1 = await cosmo.send_message(chat, "/cancel")
