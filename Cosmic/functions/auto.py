@@ -85,3 +85,4 @@ async def customizeBot():
     last = await cosmo.send_message(chat, "/done")
     for x in range(msg1.id, last.id):
         await cosmo.delete_messages(chat, x)
+

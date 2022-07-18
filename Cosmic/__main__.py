@@ -33,9 +33,10 @@ print("Userbot Started Successfully ")
 
 
 def main():
+    from Cosmic.functions.handler import cosmic
     try:
-        run_async(start_up())
         run_async(customizeBot())
+        run_async(start_up())
         tbot.run_until_disconnected()
     except Exception as e:
         print(e)

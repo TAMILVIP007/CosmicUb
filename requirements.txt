@@ -10,6 +10,7 @@ selenium
 python-dotenv
 bs4
 youtube_dl
-youtubesearchpython
+pytgcalls==3.0.0.dev22
+youtube-search-python
 telegraph
 cryptg
