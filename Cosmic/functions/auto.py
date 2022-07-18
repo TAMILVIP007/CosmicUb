@@ -42,6 +42,7 @@ async def customizeBot():
     name = (await cosmo.get_me()).first_name + "'s bot"
     uname = (await cosmo.get_me()).username + "_bot"
     msg1 = await cosmo.send_message(chat, "/cancel")
+    await asyncio.sleep(1)
     await cosmo.send_message(chat, "/newbot")
     await asyncio.sleep(1)
     msg2 = await cosmo.get_messages(chat, limit=1)
