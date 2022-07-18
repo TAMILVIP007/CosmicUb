@@ -19,4 +19,4 @@ class Vars:
     APP_HASH = getenv("APP_HASH")
     HANDLER = "."
     BOT_MODE =  False
-    SUDOS = getenv("SUDOS")
+    SUDOS = getenv("SUDOS").split(",")
