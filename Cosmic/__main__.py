@@ -1,4 +1,5 @@
-import asyncio
+from cProfile import run
+from Cosmic.functions.auto import customizeBot, start_up
 import glob
 import importlib
 import logging
@@ -7,7 +8,7 @@ from pathlib import Path
 
 from Cosmic import cosmo, tbot
 
-from . import cosmo, start_up
+from . import cosmo, run_async
 
 
 def load_plugins(plugin_name):
@@ -33,13 +34,13 @@ print("Userbot Started Successfully ")
 
 
 def main():
-    tbot.run_until_disconnected()
-    cosmo.run_until_disconnected()
-
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(start_up())
-
-
+    try:
+        run_async(start_up())
+        run_async(customizeBot())
+        tbot.run_until_disconnected()
+    except Exception as e:
+        print(e)
+        raise e
+        
 if __name__ == "__main__":
     main()

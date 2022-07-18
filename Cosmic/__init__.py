@@ -4,6 +4,7 @@ import time
 
 from pytgcalls import GroupCallFactory
 from telethon import TelegramClient
+from Cosmic.database import db
 from telethon.sessions import StringSession
 
 from config import Vars
@@ -23,7 +24,7 @@ StartTime = time.time()
 
 
 cosmo = TelegramClient(StringSession(Vars.SESSION), Vars.APP_KEY, Vars.APP_HASH).start()
-tbot = TelegramClient(None, Vars.APP_KEY, Vars.APP_HASH).start(bot_token=Vars.TOKEN)
+tbot = TelegramClient(None, Vars.APP_KEY, Vars.APP_HASH).start(bot_token=db.get_key("TOKEN"))
 VCLIENT = GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON
 
 

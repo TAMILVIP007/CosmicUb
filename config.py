@@ -15,9 +15,6 @@ class Vars:
         print("DB_URL not found")
         exit(1)
     MONGO_URL = getenv("MONGO_URL")
-    if not getenv("TOKEN"):
-        print("TOKEN not found")
-        exit(1)
     TOKEN = getenv("TOKEN")
     APP_KEY = getenv("APP_KEY")
     APP_HASH = getenv("APP_HASH")
