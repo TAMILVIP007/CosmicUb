@@ -1,8 +1,8 @@
 newthon
 gitpython
+speedtest-cli
 dnspython
 pymongo
-speedtest-cli
 https://codeload.github.com/MiyukiKun/FastTelethonhelper/zip/refs/heads/main
 requests
 ffmpeg
