@@ -84,7 +84,7 @@ async def dban(event):
         user, _ = await get_user(event)
         await cosmo(EditBannedRequest(event.chat_id, user, BANNED_RIGHTS))
         await event.delete()
-        await (await event.get_reply_message()).delete() if event.reply_to_msg_id
+        await (await event.get_reply_message()).delete() if event.reply_to_msg_id else await event.delete()
     except:
         pass
 
