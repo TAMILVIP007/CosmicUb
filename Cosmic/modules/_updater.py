@@ -2,7 +2,7 @@ from Cosmic import cosmo
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor
 
-UPSTREAM_REPO_URL = "https://github.com/TAMILVIP007/Cosmic"
+UPSTREAM_REPO_URL = "https://github.com/TAMILVIP007/CosmicUb"
 import asyncio
 import sys
 from os import environ, execle, path, remove
