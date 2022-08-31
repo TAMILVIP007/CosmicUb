@@ -4,9 +4,10 @@ import os
 import sys
 import traceback
 
+from cosmic.database.varsdb import MongoVars
+
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor
-from cosmic.database.varsdb import MongoVars
 
 db = MongoVars
 
