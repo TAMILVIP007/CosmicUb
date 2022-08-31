@@ -1,7 +1,6 @@
 import importlib
 import os
 
-
 from config import Vars
 from Cosmic import LOGGER, tbot
 
