@@ -1,8 +1,6 @@
 import asyncio
 import logging
 import time
-
-from pytgcalls import GroupCallFactory
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
@@ -24,7 +22,6 @@ StartTime = time.time()
 
 cosmo = TelegramClient(StringSession(Vars.SESSION), Vars.APP_KEY, Vars.APP_HASH).start()
 tbot = TelegramClient(None, Vars.APP_KEY, Vars.APP_HASH)
-VCLIENT = GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON
 
 
 def run_async(*args, **kwargs):

@@ -1,8 +1,6 @@
 newthon
 gitpython
 speedtest-cli
-dnspython
-pymongo
 https://codeload.github.com/MiyukiKun/FastTelethonhelper/zip/refs/heads/main
 requests
 ffmpeg
@@ -10,7 +8,6 @@ selenium
 python-dotenv
 bs4
 youtube_dl
-pytgcalls==3.0.0.dev22
 youtube-search-python
 telegraph
 cryptg
