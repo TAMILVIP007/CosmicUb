@@ -23,6 +23,7 @@ def cosmic(**args):
             except BaseException as exception:
                 logging.info(exception)
                 await log_error(ev)
+
         cosmo.add_event_handler(wrapper, events.NewMessage(**args))
         return wrapper
 

@@ -1,8 +1,9 @@
+from telethon.tl.functions.channels import EditBannedRequest
+
 from Cosmic import cosmo
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor, get_user
-from telethon.tl.types import ChatBannedRequest
-from telethon.tl.functions.channels import EditBannedRequest
+
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
     view_messages=True,
@@ -32,6 +33,7 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
+
 @cosmic(pattern="kick ?(.*)")
 async def kick(event):
     if event.is_private:
@@ -44,11 +46,10 @@ async def kick(event):
         pass
 
 
-
 @cosmic(pattern="pin$")
 async def pin(event):
     if event.is_private:
-        return 
+        return
     r = await event.get_reply_message()
     await r.pin()
 
@@ -76,6 +77,7 @@ async def ban(event):
     except:
         pass
 
+
 @cosmic(pattern="dban ?(.*)")
 async def dban(event):
     if event.is_private:
@@ -84,7 +86,9 @@ async def dban(event):
         user, _ = await get_user(event)
         await cosmo(EditBannedRequest(event.chat_id, user, BANNED_RIGHTS))
         await event.delete()
-        await (await event.get_reply_message()).delete() if event.reply_to_msg_id else await event.delete()
+        await (
+            await event.get_reply_message()
+        ).delete() if event.reply_to_msg_id else await event.delete()
     except:
         pass
 
