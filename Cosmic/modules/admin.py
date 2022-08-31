@@ -1,5 +1,5 @@
 from telethon.tl.functions.channels import EditBannedRequest
-
+froom telethon.tl.types import ChatBannedRights
 from Cosmic import cosmo
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor, get_user
