@@ -1,4 +1,6 @@
 import importlib
+import os
+
 
 from config import Vars
 from Cosmic import LOGGER, tbot
@@ -6,10 +8,10 @@ from Cosmic import LOGGER, tbot
 
 def import_modules(logger):
     """Imports all modules in the modules folder."""
-    path = "Vexa/modules/"
+    path = "Cosmic/modules/"
     for filename in os.listdir(path):
         if filename.endswith(".py"):
-            importlib.import_module("Vexa.modules." + filename[:-3])
+            importlib.import_module("Cosmic.modules." + filename[:-3])
             logger.info("Imported module: " + filename)
 
 
