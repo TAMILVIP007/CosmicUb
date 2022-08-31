@@ -7,7 +7,7 @@ from pathlib import Path
 from Cosmic import tbot
 from Cosmic.database import db
 from Cosmic.functions.auto import customizeBot, start_up
-
+from config import Vars
 from . import run_async
 
 
@@ -35,13 +35,12 @@ print("Userbot Started Successfully ")
 
 def main():
     try:
-        run_async(customizeBot())
+       # run_async(customizeBot())
         run_async(start_up())
-        tbot.start(bot_token=db.get_key("TOKEN"))
+        tbot.start(bot_token = Vars.TOKEN)
         tbot.run_until_disconnected()
     except Exception as e:
         print(e)
-        raise e
 
 
 if __name__ == "__main__":

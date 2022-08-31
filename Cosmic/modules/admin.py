@@ -1,42 +1,61 @@
 from Cosmic import cosmo
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor, get_user
+from telethon.tl.types import ChatBannedRequest
+from telethon.tl.functions.channels import EditBannedRequest
+BANNED_RIGHTS = ChatBannedRights(
+    until_date=None,
+    view_messages=True,
+    send_messages=True,
+    send_media=True,
+    send_stickers=True,
+    send_gifs=True,
+    send_games=True,
+    send_inline=True,
+    embed_links=True,
+)
 
+UNBAN_RIGHTS = ChatBannedRights(
+    until_date=None,
+    send_messages=None,
+    send_media=None,
+    send_stickers=None,
+    send_gifs=None,
+    send_games=None,
+    send_inline=None,
+    embed_links=None,
+)
+
+KICK_RIGHTS = ChatBannedRights(until_date=None, view_messages=True)
+
+MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
+
+UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 @cosmic(pattern="kick ?(.*)")
 async def kick(event):
     if event.is_private:
-        return await event.edit("Please use this in groups.")
+        return await eor(event, "Please use this in groups.")
     try:
         user, extra = await get_user(event)
-    except TypeError:
-        pass
-    if not user:
-        await eor(event, "Failed to fetch user.")
-    if not event.chat.admin_rights.ban_users:
-        return await eor(event, "Failed to Kick, No CanBanUsers Right.")
-    try:
-        await cosmo.kick_participant(event.chat_id, user.id)
-        await eor(
-            event,
-            f"Kicked **[{user.first_name}](tg://user?id={user.id})** from [{event.chat.title}](http://t.me/{event.chat.username})!",
-        )
+        await cosmo(EditBannedRequest(event.chat_id, user, KICK_RIGHTS))
+        await event.delete()
     except:
-        await eor(event, "Can't kick admins.")
+        pass
+
 
 
 @cosmic(pattern="pin$")
 async def pin(event):
     if event.is_private:
-        return await eor(event, "Please use this in groups.")
+        return 
     r = await event.get_reply_message()
     await r.pin()
 
 
 @cosmic(pattern="kickme")
 async def lmao(event):
-    await eor(event, f"My Master is leaving from **{event.chat.title}**")
-    await event.client.kick_participant(event.chat_id, "me")
+    await event.client.delete_dialog(event.chat_id)
 
 
 @cosmic(pattern="del")
@@ -52,51 +71,31 @@ async def ban(event):
         return await eor(event, "Please use this in groups.")
     try:
         user, extra = await get_user(event)
-    except TypeError:
-        pass
-    if not user:
-        await eor(event, "Failed to fetch user.")
-    await cosmo.get_permissions(event.chat_id, "me")
-    if not event.chat.admin_rights.ban_users:
-        return await eor(event, "Dont have enough ryts")
-    try:
-        await cosmo.edit_permissions(event.chat_id, user.id, view_messages=False)
-        await eor(
-            event,
-            f"Banned **[{user.first_name}](tg://user?id={user.id})** from [{event.chat.title}](http://t.me/{event.chat.username})!",
-        )
+        await cosmo(EditBannedRequest(event.chat_id, user, BANNED_RIGHTS))
+        await event.delete()
     except:
-        await eor(event, "Can't ban admins.")
-
+        pass
 
 @cosmic(pattern="dban ?(.*)")
 async def dban(event):
     if event.is_private:
         return await event.edit("Please use this in groups.")
-    elif not event.chat.admin_rights.ban_users:
-        return await eor(event, "Failed to ban, No CanBanUsers Right.")
     try:
-        lol = await event.get_reply_message()
-        await cosmo.edit_permissions(event.chat_id, lol.sender.id, view_messages=False)
-        await lol.delete()
+        user, _ = await get_user(event)
+        await cosmo(EditBannedRequest(event.chat_id, user, BANNED_RIGHTS))
         await event.delete()
+        await (await event.get_reply_message()).delete() if event.reply_to_msg_id
     except:
-        await eor(event, "Can't ban admins.")
+        pass
 
 
 @cosmic(pattern="unban ?(.*)")
 async def unban(event):
     if event.is_private:
-        return await event.edit("Please use this in groups.")
+        return await eor(event, "Please use this in groups.")
     try:
         user, extra = await get_user(event)
-    except TypeError:
-        pass
-    if not user:
-        await event.edit("Failed to fetch user.")
-    elif not event.chat.admin_rights.ban_users:
-        return await eor(event, "Failed to Unban, No CanBanUsers Right.")
-    try:
-        await cosmo.edit_permissions(event.chat_id, user, view_messages=True)
+        await cosmo(EditBannedRequest(event.chat_id, user, UNBAN_RIGHTS))
+        await event.delete()
     except:
-        await eor(event, "Can't ban admins.")
+        pass

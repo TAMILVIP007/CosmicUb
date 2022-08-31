@@ -23,10 +23,6 @@ def cosmic(**args):
             except BaseException as exception:
                 logging.info(exception)
                 await log_error(ev)
-
-        if Vars.BOT_MODE:
-            tbot.add_event_handler(wrapper, events.MessageEdited(**args))
-            tbot.add_event_handler(wrapper, events.NewMessage(**args))
         cosmo.add_event_handler(wrapper, events.NewMessage(**args))
         return wrapper
 
