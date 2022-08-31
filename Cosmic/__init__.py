@@ -29,4 +29,4 @@ VCLIENT = GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON
 
 def run_async(*args, **kwargs):
     loop = asyncio.get_event_loop()
-    return loop.run_until_complete(*args, **kwargs)
+    return loop.create_task(*args, **kwargs)

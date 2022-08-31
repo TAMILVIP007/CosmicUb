@@ -14,8 +14,7 @@ from Cosmic.functions.vars import authorized_
 
 def cosmic(**args):
     args["pattern"] = "^[" + Vars.HANDLER + "](?i)" + args["pattern"]
-    args["from_users"] = authorized_()
-
+    args["outgoin"] = True
     def decorator(func):
         async def wrapper(ev):
             try:
@@ -26,7 +25,6 @@ def cosmic(**args):
 
         cosmo.add_event_handler(wrapper, events.NewMessage(**args))
         return wrapper
-
     return decorator
 
 
