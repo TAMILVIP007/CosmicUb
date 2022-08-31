@@ -12,8 +12,7 @@ def import_modules(logger):
             importlib.import_module("Vexa.modules." + filename[:-3])
             logger.info("Imported module: " + filename)
 
-
-import_module(LOGGER)
+import_modules(LOGGER)
 
 print("Userbot Started Successfully ")
 
