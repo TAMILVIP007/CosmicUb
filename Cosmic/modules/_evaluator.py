@@ -6,7 +6,7 @@ import traceback
 
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor
-from Cosmic.database import db
+
 
 @cosmic(pattern="exec ?(.*)")
 async def __exec(e):
