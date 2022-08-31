@@ -6,9 +6,6 @@ from pathlib import Path
 
 from config import Vars
 from Cosmic import tbot
-from Cosmic.functions.auto import start_up
-
-from . import run_async
 
 
 def load_plugins(plugin_name):
@@ -35,7 +32,7 @@ print("Userbot Started Successfully ")
 
 def main():
     try:
-       # run_async(start_up())
+        # run_async(start_up())
         tbot.start(bot_token=Vars.TOKEN)
         tbot.run_until_disconnected()
     except Exception as e:
