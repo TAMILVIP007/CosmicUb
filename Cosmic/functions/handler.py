@@ -13,7 +13,7 @@ from Cosmic.functions.misc import eor, telegraph_
 
 def cosmic(**args):
     args["pattern"] = "^[" + Vars.HANDLER + "](?i)" + args["pattern"]
-    args["outgoin"] = True
+    args["outgoing"] = True
 
     def decorator(func):
         async def wrapper(ev):
