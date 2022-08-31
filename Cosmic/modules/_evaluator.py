@@ -8,6 +8,7 @@ from cosmic.database.varsdb import MongoVars
 
 from Cosmic.functions.handler import cosmic
 from Cosmic.functions.misc import eor
+from Cosmic.database.varsdb import MongoVars
 
 db = MongoVars
 
